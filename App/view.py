@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
-
+from time import process_time
 import config as cf
 import sys
 import controller
@@ -90,7 +90,10 @@ while True:
     if int(inputs[0]) == 1:
         print("Cargando información de los archivos ....")
         catalog = initCatalog()
+        t1=process_time()
         loadData(catalog)
+        t2=process_time()
+        print("Tiempo: " + str(t2-t1) + "s")
         print('Libros cargados: ' + str(lt.size(catalog['books'])))
         print('Autores cargados: ' + str(lt.size(catalog['authors'])))
         print('Géneros cargados: ' + str(lt.size(catalog['tags'])))
